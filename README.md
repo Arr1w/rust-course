@@ -1,4 +1,4 @@
-### This is template repository to start a simple Rust project
+### This is a template repository to start a simple Rust project
 
 ### Installing rust
 
