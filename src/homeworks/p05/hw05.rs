@@ -1,22 +1,10 @@
-fn is_prime(n: u64) -> bool {
-    if n < 2 {
-        return false;
-    }
-    if n == 2 {
-        return true;
-    }
-    if n % 2 == 0 {
-        return false;
-    }
-    let limit = (n as f64).sqrt() as u64;
-    (3..=limit)
-        .step_by(2)
-        .all(|i| n % i != 0)
-}
+use std::io;
 
-fn main() {
-    let numbers = [1, 2, 3, 4, 5, 16, 17, 19, 21, 23, 29, 30];
-    for &n in &numbers {
-        println!("{:>2} -> {}", n, is_prime(n));
+fn gcd(mut a: u32, mut b: u32) -> u32 {
+    while b != 0 {
+        let temp = b;
+        b = a % b;
+        a = temp;
     }
+    a
 }
