@@ -1,25 +1,20 @@
-fn draw_tree(levels: usize) {
-    let max_width = levels * 2 + 1;
-
-    (1..=levels).for_each(|level| {
-        (1..=level + 1).for_each(|line| {
-            let stars = line * 2 - 1;
-            let padding = (max_width - stars) / 2;
-            let line_str: String = " ".repeat(padding) + &"*".repeat(stars);
-            println!("{}", line_str);
-        });
-    });
-
-    // Стовбур
-    let trunk_width = 1;
-    let trunk_height = 1;
-    let padding = (max_width - trunk_width) / 2;
-    for _ in 0..trunk_height {
-        println!("{}{}", " ".repeat(padding), "|");
-    }
-}
-
 fn main() {
-    let triangles = 5; // Можна змінити кількість рівнів тут
-    draw_tree(triangles);
+    let triangle_count = 5; // Кількість трикутників
+
+    let max_width = triangle_count * 2 + 1;
+
+    // Генерація трикутників
+    for triangle in 0..triangle_count {
+        for line in 0..=triangle {
+            let stars = 1 + line * 2;
+            let spaces = (max_width - stars) / 2;
+            println!("{}{}", " ".repeat(spaces), "*".repeat(stars));
+        }
+    }
+
+    // Стовбур (2 рядки, по 1 зірочці)
+    for _ in 0..2 {
+        let spaces = (max_width - 1) / 2;
+        println!("{}*", " ".repeat(spaces));
+    }
 }
